@@ -129,6 +129,12 @@ namespace Jellyfin.LiveTv
                 TopParentIds = [topFolder.Id],
                 IsFavorite = query.IsFavorite,
                 IsLiked = query.IsLiked,
+                MediaTypes = query.ChannelType switch
+                {
+                    ChannelType.Radio => [MediaType.Audio],
+                    ChannelType.TV => [MediaType.Video],
+                    _ => []
+                },
                 StartIndex = query.StartIndex,
                 Limit = query.Limit,
                 DtoOptions = dtoOptions
