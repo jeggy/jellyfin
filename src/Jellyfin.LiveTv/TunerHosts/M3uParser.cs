@@ -139,6 +139,13 @@ namespace Jellyfin.LiveTv.TunerHosts
                 channel.ChannelGroup = groupTitle;
             }
 
+            if (attributes.TryGetValue("radio", out string radio)
+                && bool.TryParse(radio, out var isRadio)
+                && isRadio)
+            {
+                channel.ChannelType = ChannelType.Radio;
+            }
+
             channel.Name = GetChannelName(extInf, attributes);
             channel.Number = GetChannelNumber(extInf, attributes, mediaUrl);
 

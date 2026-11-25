@@ -428,6 +428,11 @@ public class GuideManager : IGuideManager
 
         item.ParentId = parentFolderId;
 
+        if (item.ChannelType != channelInfo.ChannelType)
+        {
+            forceUpdate = true;
+        }
+
         item.ChannelType = channelInfo.ChannelType;
         item.ServiceName = serviceName;
 
